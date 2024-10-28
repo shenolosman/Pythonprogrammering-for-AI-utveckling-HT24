@@ -1,0 +1,101 @@
+[
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "save_file",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "save_file",
+        "description": "save_file",
+        "detail": "save_file",
+        "documentation": {}
+    },
+    {
+        "label": "hangman_game",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "hangman_game",
+        "description": "hangman_game",
+        "detail": "hangman_game",
+        "documentation": {}
+    },
+    {
+        "label": "play_hangman",
+        "kind": 2,
+        "importPath": "week3-lab.hangman_game",
+        "description": "week3-lab.hangman_game",
+        "peekOfCode": "def play_hangman():\n    word = random.choice(word_list)\n    right_word = [\"_\"] * len(word)\n    guessed_letters = []\n    fault = 0\n    max_fault = len(word) - 1\n    fault = 0\n    while True:\n        print(\"\\nOrd: \", \" \".join(right_word))\n        print(f\"Gissade bokstäver: {', '.join(guessed_letters)}\")",
+        "detail": "week3-lab.hangman_game",
+        "documentation": {}
+    },
+    {
+        "label": "word_list",
+        "kind": 5,
+        "importPath": "week3-lab.hangman_game",
+        "description": "week3-lab.hangman_game",
+        "peekOfCode": "word_list = [\n    \"hangman\",\n    \"python\",\n    \"responsibility\",\n    \"game\",\n    \"program\",\n    \"selection\",\n    \"penalty\",\n    \"magazine\",\n    \"decision\",",
+        "detail": "week3-lab.hangman_game",
+        "documentation": {}
+    },
+    {
+        "label": "show_menu",
+        "kind": 2,
+        "importPath": "week3-lab.main",
+        "description": "week3-lab.main",
+        "peekOfCode": "def show_menu():\n    print(\"\\n1. Spela Hangman\")\n    print(\"2. Visa de senaste 5 resultsen\")\n    print(\"3. Avsluta\")\ndef main_program():\n    while True:\n        show_menu()\n        val = input(\"\\nVälj ett alternativ: \")\n        if val == \"1\":\n            hangman_game.play_hangman()",
+        "detail": "week3-lab.main",
+        "documentation": {}
+    },
+    {
+        "label": "main_program",
+        "kind": 2,
+        "importPath": "week3-lab.main",
+        "description": "week3-lab.main",
+        "peekOfCode": "def main_program():\n    while True:\n        show_menu()\n        val = input(\"\\nVälj ett alternativ: \")\n        if val == \"1\":\n            hangman_game.play_hangman()\n        elif val == \"2\":\n            save_file.show_results()\n        elif val == \"3\":\n            print(\"Avslutar spelet.\")",
+        "detail": "week3-lab.main",
+        "documentation": {}
+    },
+    {
+        "label": "read_results",
+        "kind": 2,
+        "importPath": "week3-lab.save_file",
+        "description": "week3-lab.save_file",
+        "peekOfCode": "def read_results():\n    try:\n        with open(fileName, \"r\") as fil:\n            results = fil.readlines()\n            return [row.strip() for row in results[-5:]]\n    except FileNotFoundError:\n        return []\ndef save_results(new_results):\n    with open(fileName, \"a\") as fil:\n        fil.write(f\"{new_results}\\n\")",
+        "detail": "week3-lab.save_file",
+        "documentation": {}
+    },
+    {
+        "label": "save_results",
+        "kind": 2,
+        "importPath": "week3-lab.save_file",
+        "description": "week3-lab.save_file",
+        "peekOfCode": "def save_results(new_results):\n    with open(fileName, \"a\") as fil:\n        fil.write(f\"{new_results}\\n\")\ndef show_results():\n    results = read_results()\n    if results:\n        print(\"\\nSenaste 5 resultsen:\")\n        for row in results:\n            print(row)\n    else:",
+        "detail": "week3-lab.save_file",
+        "documentation": {}
+    },
+    {
+        "label": "show_results",
+        "kind": 2,
+        "importPath": "week3-lab.save_file",
+        "description": "week3-lab.save_file",
+        "peekOfCode": "def show_results():\n    results = read_results()\n    if results:\n        print(\"\\nSenaste 5 resultsen:\")\n        for row in results:\n            print(row)\n    else:\n        print(\"Inga results hittades.\")",
+        "detail": "week3-lab.save_file",
+        "documentation": {}
+    },
+    {
+        "label": "fileName",
+        "kind": 5,
+        "importPath": "week3-lab.save_file",
+        "description": "week3-lab.save_file",
+        "peekOfCode": "fileName = \"week3-lab/results.txt\"\ndef read_results():\n    try:\n        with open(fileName, \"r\") as fil:\n            results = fil.readlines()\n            return [row.strip() for row in results[-5:]]\n    except FileNotFoundError:\n        return []\ndef save_results(new_results):\n    with open(fileName, \"a\") as fil:",
+        "detail": "week3-lab.save_file",
+        "documentation": {}
+    }
+]
