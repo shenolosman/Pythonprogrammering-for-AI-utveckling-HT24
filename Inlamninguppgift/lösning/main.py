@@ -7,19 +7,35 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report, mean_squared_error, r2_score
 from sklearn.inspection import permutation_importance
 
-# Läs in originaldata
-url = "./carexp.csv"
-df = pd.read_csv(url)
+# Klass för att hantera och läsa in CSV-filer
+class CSVHandler:
+    def __init__(self, filväg):
+        """Initialiserar och laddar in CSV-filen."""
+        self.filväg = filväg
+        self.df = None
 
+    def läs_data(self):
+        """Läser in data från en CSV-fil."""
+        self.df = pd.read_csv(self.filväg)
+        print("Data har lästs in framgångsrikt.")
+        return self.df
+
+    def visa_info(self):
+        """Visar grundläggande information om datasetet."""
+        print("Dataset Information:")
+        print("-" * 50)
+        print("\nDataset Shape:", self.df.shape)
+        print("\nKolumner:", self.df.columns.tolist())
+        print("\nDatatyper:")
+        print(self.df.dtypes)
+        print("\nSaknade värden:")
+        print(self.df.isnull().sum())
+
+# Använd klassen för att läsa in data
+csv_loader = CSVHandler("./carexp.csv")
+df = csv_loader.läs_data()
 # Grundläggande dataanalys
-print("Dataset Information:")
-print("-" * 50)
-print("\nDataset Shape:", df.shape)
-print("\nColumns:", df.columns.tolist())
-print("\nData Types:")
-print(df.dtypes)
-print("\nNull Values:")
-print(df.isnull().sum())
+csv_loader.visa_info()
 
 # Analysera populäraste bilmärkena
 plt.figure(figsize=(15, 6))
